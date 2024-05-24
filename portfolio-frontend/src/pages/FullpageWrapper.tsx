@@ -1,19 +1,32 @@
 import React from 'react'
+import { Box, useTheme } from '@mui/material'
 
 
 interface FullpageWrapperProps {
     children?: React.ReactNode
+    key?: number
 }
-const FullPageWrapper: React.FC<FullpageWrapperProps> = ({ children }) => {
+const FullPageWrapper: React.FC<FullpageWrapperProps> = ({ children, key }) => {
+
+    const theme = useTheme()
 
     return (
-        <div className="section h-screen flex items-center justify-center bg-gray-100">
+        <Box
+            sx={{
+                height: '100vh',
+                scrollSnapAlign: 'start',
+                backgroundColor: theme.palette.background1?.main,
+            }}
+            
+            bgcolor={theme.palette.background.default}
+
+        >
             {React.Children && React.Children.map(children, (child, index) => (
-                <div key={index} className="scroll-section">
+                <div key={index} >
                     {child}
                 </div>
             ))}
-        </div>
+        </Box>
     )
 }
 

@@ -1,6 +1,5 @@
-// src/components/ScrollContainer.tsx
-import React from 'react'
-import useScrollBackground from '../hooks/useScrollBackground'
+import React, { useRef } from 'react'
+import Box from '@mui/material/Box'
 import FullPageWrapper from './FullpageWrapper'
 
 
@@ -9,17 +8,23 @@ interface ScrollContainerProps {
 }
 
 const ScrollContainer: React.FC<ScrollContainerProps> = ({ children }) => {
-
-    useScrollBackground()
+    const containerRef = useRef<HTMLDivElement>(null)
 
     return (
-        <div className="scroll-container flex flex-col">
-            {React.Children && React.Children.map(children, (child, index) => (
-                <FullPageWrapper key={index}>
+        <Box
+            ref={containerRef}
+            sx={{
+                overflowY: 'auto',
+                height: '100vh',
+                scrollSnapType: 'y mandatory',
+            }}
+        >
+            {React.Children.map(children, (child, index) => (
+                <FullPageWrapper key={index} >
                     {child}
                 </FullPageWrapper>
             ))}
-        </div>
+        </Box>
     )
 }
 
