@@ -11,6 +11,9 @@ function App() {
             <ScrollContainer>
               <p>Home</p>
               <p>About</p>
+              <p>Hallo</p>
+              <p>Welt</p>
+              <p>Kannst du mich hören?</p>
             </ScrollContainer>
           } />
         </Routes>

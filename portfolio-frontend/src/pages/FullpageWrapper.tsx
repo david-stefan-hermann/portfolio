@@ -1,31 +1,30 @@
 import React from 'react'
-import { Box, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 
 
 interface FullpageWrapperProps {
     children?: React.ReactNode
-    key?: number
 }
-const FullPageWrapper: React.FC<FullpageWrapperProps> = ({ children, key }) => {
 
-    const theme = useTheme()
+const FullPageWrapper: React.FC<FullpageWrapperProps> = ({ children }) => {
 
     return (
         <Box
+            className="flex flex-col justify-center items-center py-4"
             sx={{
                 height: '100vh',
                 scrollSnapAlign: 'start',
-                backgroundColor: theme.palette.background1?.main,
             }}
-            
-            bgcolor={theme.palette.background.default}
-
         >
-            {React.Children && React.Children.map(children, (child, index) => (
-                <div key={index} >
-                    {child}
-                </div>
-            ))}
+            <Box
+                className="max-w-3xl w-full h-full border-2 border-black"
+            >
+                {React.Children && React.Children.map(children, (child, index) => (
+                    <div key={index} >
+                        {child}
+                    </div>
+                ))}
+            </Box>
         </Box>
     )
 }
