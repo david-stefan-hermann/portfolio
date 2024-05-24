@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import ScrollContainer from './pages/ScrollContainer'
 
 function App() {
 
@@ -6,9 +7,14 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<p> Hallo </p>} />
+          <Route path="/" element={
+            <ScrollContainer>
+              <p>Home</p>
+              <p>About</p>
+            </ScrollContainer>
+          } />
         </Routes>
-    </Router>
+      </Router>
     </>
   )
 }
