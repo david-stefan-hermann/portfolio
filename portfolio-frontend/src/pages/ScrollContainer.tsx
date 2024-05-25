@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Box from '@mui/material/Box'
 import FullPageWrapper from './FullpageWrapper'
-import useTheme from '@mui/material/styles/useTheme'
+import colors from '../colors'
 
 
 interface ScrollContainerProps {
@@ -10,20 +9,6 @@ interface ScrollContainerProps {
 
 const ScrollContainer: React.FC<ScrollContainerProps> = ({ children }) => {
     const containerRef = useRef<HTMLDivElement>(null)
-    const theme = useTheme()
-
-    const colors = [
-        theme.palette.background5?.main,
-        theme.palette.background6?.main,
-        theme.palette.background7?.main,
-        theme.palette.background8?.main,
-        theme.palette.background9?.main,
-        theme.palette.background10?.main,
-        theme.palette.background1?.main,
-        theme.palette.background2?.main,
-        theme.palette.background3?.main,
-        theme.palette.background4?.main,
-    ] // Define the background colors for each section
 
     // get visible FullPageWrapper based on scroll position
     const [visibleIndex, setVisibleIndex] = useState(0)
@@ -48,15 +33,21 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ children }) => {
         }
     }, [])
 
+    const getColor = (index: number) => {
+        const wrappedIndex = index + 4 % colors.background.length
+        return colors.background[wrappedIndex]
+    }
+
     return (
-        <Box
+        <div
             ref={containerRef}
-            sx={{
-                overflowY: 'auto',
-                height: '100vh',
-                scrollSnapType: 'y mandatory',
-                transition: 'background-color 1s ease',
-                backgroundColor: colors[visibleIndex],
+            className="
+            h-screen 
+            snap-mandatory snap-y overflow-y-scroll 
+            transition-colors duration-1000 font-roboto}
+            "
+            style={{
+                backgroundColor: getColor(visibleIndex)
             }}
         >
             {React.Children.map(children, (child, index) => (
@@ -64,7 +55,7 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ children }) => {
                     {child}
                 </FullPageWrapper>
             ))}
-        </Box>
+        </div>
     )
 }
 

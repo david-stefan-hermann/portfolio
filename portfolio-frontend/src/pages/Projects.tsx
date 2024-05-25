@@ -13,6 +13,66 @@ const Projects: React.FC = () => {
             description: "A brief description of Project Two.",
             imageUrl: "path/to/image2.jpg",
             link: "http://example.com/project-two"
+        },
+        {
+            title: "Project One",
+            description: "A brief description of Project One.",
+            imageUrl: "path/to/image1.jpg",
+            link: "http://example.com/project-one"
+        },
+        {
+            title: "Project Two",
+            description: "A brief description of Project Two.",
+            imageUrl: "path/to/image2.jpg",
+            link: "http://example.com/project-two"
+        },
+        {
+            title: "Project One",
+            description: "A brief description of Project One.",
+            imageUrl: "path/to/image1.jpg",
+            link: "http://example.com/project-one"
+        },
+        {
+            title: "Project Two",
+            description: "A brief description of Project Two.",
+            imageUrl: "path/to/image2.jpg",
+            link: "http://example.com/project-two"
+        },
+        {
+            title: "Project One",
+            description: "A brief description of Project One.",
+            imageUrl: "path/to/image1.jpg",
+            link: "http://example.com/project-one"
+        },
+        {
+            title: "Project Two",
+            description: "A brief description of Project Two.",
+            imageUrl: "path/to/image2.jpg",
+            link: "http://example.com/project-two"
+        },
+        {
+            title: "Project One",
+            description: "A brief description of Project One.",
+            imageUrl: "path/to/image1.jpg",
+            link: "http://example.com/project-one"
+        },
+        {
+            title: "Project Two",
+            description: "A brief description of Project Two.",
+            imageUrl: "path/to/image2.jpg",
+            link: "http://example.com/project-two"
+        },
+        {
+            title: "Project One",
+            description: "A brief description of Project One.",
+            imageUrl: "path/to/image1.jpg",
+            link: "http://example.com/project-one"
+        },
+        {
+            title: "Project Two",
+            description: "A brief description of Project Two.",
+            imageUrl: "path/to/image2.jpg",
+            link: "http://example.com/project-two"
         }
     ]
 

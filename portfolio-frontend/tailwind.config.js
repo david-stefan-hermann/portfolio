@@ -5,8 +5,21 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'indie': ['Indie Flower', 'sans-serif'],
+        'annie': ['Annie Use Your Telescope', 'sans-serif'],
+        'playpen': ['Playpen Sans', 'sans-serif'],
+        'roboto': ['Roboto', 'sans-serif']
+      },
+      screens: {
+        'betterhover': { 'raw': '(hover: hover)' },
+      }
+    },
   },
   plugins: [],
+  future: {
+    hoverOnlyWhenSupported: true
+  }
 }
 
