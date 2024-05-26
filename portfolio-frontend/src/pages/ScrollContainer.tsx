@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import FullPageWrapper from './FullpageWrapper'
 import colors from '../colors'
+import useIntersectionObserver from '../hooks/useIntersectionObserver'
 
 // Define the props for the ScrollContainer component
 interface ScrollContainerProps {
@@ -16,6 +17,9 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ children }) => {
     // State to keep track of the currently visible FullPageWrapper
     const [visibleIndex, setVisibleIndex] = useState(0)
 
+    useIntersectionObserver(setVisibleIndex, containerRef);
+
+    /*
     useEffect(() => {
         // Calculate the height of the viewport
         const viewportHeight = window.innerHeight || document.documentElement.clientHeight
@@ -52,7 +56,7 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ children }) => {
             }
         }
     }, [])
-
+*/
     // Function to get the background color based on the index
     const getColor = (index: number) => {
         // Wrap the index to ensure it stays within the range of available colors
