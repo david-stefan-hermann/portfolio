@@ -1,26 +1,15 @@
 import React from 'react'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+
 
 const About: React.FC = () => {
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100%"
-      bgcolor="grey.100"
-      id="about"
-    >
-      <Box textAlign="center">
-        <Typography variant="h2" component="h1" gutterBottom>
-          About Me
-        </Typography>
-        <Typography variant="h5">
-          Hi, I'm [Your Name], a [Your Profession] based in [Your Location].
-        </Typography>
-      </Box>
-    </Box>
+      <div className="text-center">
+        <h1 className="text-6xl mb-4 font-bold">David Hermann</h1>
+        <p className="text-xl">Hi, I'm [Your Name], an IT student based in [Your Location].</p>
+        <p className="text-xl mt-2">I'm currently studying [Your Major] at [Your University].</p>
+        <p className="text-xl mt-2">I have a passion for [Your Passion] and am always eager to learn more about [Your Interest].</p>
+        <p className="text-xl mt-2">In my free time, I enjoy [Your Hobby].</p>
+      </div>
   )
 }
 
