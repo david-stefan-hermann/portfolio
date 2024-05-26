@@ -28,17 +28,20 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ children }) => {
 
     return (
         <div
-            ref={containerRef}
             className="transition-colors duration-1000 font-roboto"
             style={{
                 backgroundColor: getColor(visibleIndex)
             }}
         >
-            {React.Children.map(children, (child, index) => (
-                <FullPageWrapper key={index}>
-                    {child}
-                </FullPageWrapper>
-            ))}
+            <div
+            ref={containerRef}
+            >
+                {React.Children.map(children, (child, index) => (
+                    <FullPageWrapper key={index}>
+                        {child}
+                    </FullPageWrapper>
+                ))}
+            </div>
         </div>
     )
 }
