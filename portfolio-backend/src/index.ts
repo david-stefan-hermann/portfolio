@@ -4,6 +4,7 @@ import path from 'path'
 import educationRouter from './routes/education'
 import projectsRouter from './routes/projects'
 import dotenv from 'dotenv'
+import cors from 'cors'
 
 
 const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
@@ -18,6 +19,7 @@ if (!baseUrl) {
   process.exit(1)
 }
 
+app.use(cors({ origin: 'http://localhost:5173' }))
 app.use(bodyParser.json())
 
 // Serve static files (images)
