@@ -1,10 +1,10 @@
-// src/components/Portfolio.tsx
 import React from 'react'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import SlideShow from './SlideShow'
+import { Button } from '@material-ui/core'
 
 
 interface ProjectData {
@@ -29,6 +29,13 @@ const PortfolioCard: React.FC<{ data: ProjectData }> = ({ data }) => {
           <Typography variant="body2" color="text.secondary">
             {data?.description}
           </Typography>
+          {
+            data?.link && (
+              <Button color="primary" href={data?.link} target="_blank" rel="noopener noreferrer">
+              Learn More
+              </Button>
+            )
+          }
         </CardContent>
       </Card>
     </Grid>

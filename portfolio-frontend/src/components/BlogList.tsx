@@ -1,4 +1,3 @@
-// src/components/BlogList.tsx
 import React from 'react'
 import Grid from '@mui/material/Grid'
 import BlogCard from './BlogCard'
