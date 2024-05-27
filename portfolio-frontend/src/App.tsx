@@ -1,33 +1,34 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { CssBaseline, ThemeProvider } from '@material-ui/core'
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
+import { Container } from 'react-bootstrap'
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+import Home from './pages/Home' // replace with your actual component paths
 import Portfolio from './pages/Portfolio'
 import Blog from './pages/Blog'
-import theme from './theme'
+import TopNavbar from './components/TopNavbar'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 /* Roboto Font for Material UI */
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
+import MainContent from './components/MainContent'
 
 
 function App() {
 
   return (
     <>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Bildung" element={<Blog />} />
-          <Route path="/Portfolio" element={<Portfolio />} />
-        </Routes>
+        <TopNavbar />
+        <MainContent>
+          <Routes>
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/bildung" element={<><Blog /><Blog /><Blog /><Blog /></>} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Link to="/" />} />
+          </Routes>
+        </MainContent>
       </Router>
-          </ThemeProvider>
     </>
   )
 }
