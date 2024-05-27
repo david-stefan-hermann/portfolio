@@ -5,10 +5,10 @@ const Home: React.FC = () => {
   return (
     <div className='w-100 text-center'>
       <p className='text-7xl'>
-      David Hermann
+        David Hermann
       </p>
       <p className='text-xl'>
-      Software Developer und Systemadministrator
+        Software Developer und Systemadministrator
       </p>
     </div>
   )

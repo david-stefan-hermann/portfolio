@@ -1,4 +1,3 @@
-import { Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import Home from './pages/Home' // replace with your actual component paths
 import Portfolio from './pages/Portfolio'
@@ -23,7 +22,7 @@ function App() {
         <MainContent>
           <Routes>
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/bildung" element={<><Blog /><Blog /><Blog /><Blog /></>} />
+            <Route path="/bildung" element={<Blog />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Link to="/" />} />
           </Routes>
