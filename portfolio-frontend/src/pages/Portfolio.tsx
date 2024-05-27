@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import PortfolioCard from '../components/PortfolioCard'
 import { Grid } from '@material-ui/core'
+import axios from 'axios'
 
 
 interface ProjectData {
@@ -17,16 +18,15 @@ const PortfolioPage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/projects') // replace with your API endpoint
-        const data = await response.json()
-        setProjects(data)
-      } catch (error) {
-        console.error('Error:', error)
-      }
+        try {
+            const response = await axios.get('http://localhost:3000/api/projects')
+            setProjects(response.data)
+        } catch (error) {
+            console.error('Error:', error)
+        }
     }
     fetchData()
-  }, [])
+}, [])
 
   return (
     <Container>
