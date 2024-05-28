@@ -16,10 +16,12 @@ const Blog: React.FC = () => {
   ]
 
   return (
-    <div className='w-full'>
-      <p className='text-4xl text-center pt-4 pb-2'>
-        Bildung
-      </p>
+    <div className='w-full timeline flex flex-col'>
+      <div className='z-10 bg-white pb-10 -mb-10'>
+        <p className='text-4xl text-center pt-4 pb-2'>
+          Bildung
+        </p>
+      </div>
       {posts.map((post) => (
         <BlogCard key={post.id} id={post.id} title={post.title} description={post.description} image={post.image} />
       ))}
