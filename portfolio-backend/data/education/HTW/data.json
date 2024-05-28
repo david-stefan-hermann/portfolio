@@ -1,5 +1,8 @@
 {
-    "title": "My Project",
-    "description": "This is a description of my project.",
-    "link": "https://example.com"
+    "site": "Hochschule für Technik und Wirtschaft",
+    "location": "Berlin",
+    "study": "Angewandte Informatik (B.Sc.)",
+    "start_date": "April 2022",
+    "end_date": "heute",
+    "link": "https://htw-berlin.de"
 }
