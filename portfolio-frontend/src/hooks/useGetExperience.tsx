@@ -13,13 +13,13 @@ interface ApiBlogData {
   images?: string[]
 }
 
-const useGetEducation = (): ApiBlogData[] | null => {
+const useGetExperience = (): ApiBlogData[] | null => {
   const [data, setData] = useState<ApiBlogData[] | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${config.API_URL}/education`)
+        const response = await axios.get(`${config.API_URL}/experience`)
         setData(response.data)
       } catch (error) {
         console.error('Error:', error)
@@ -31,4 +31,4 @@ const useGetEducation = (): ApiBlogData[] | null => {
   return data
 }
 
-export default useGetEducation
+export default useGetExperience

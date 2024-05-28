@@ -1,4 +1,3 @@
-// src/hooks/useApiData.ts
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import config from '../../config'
