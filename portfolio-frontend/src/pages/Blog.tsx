@@ -1,11 +1,15 @@
 import React from 'react'
 import BlogCard from '../components/BlogCard'
-import useGetEducation from '../hooks/useGetEducation'
 
 
-const Blog: React.FC<{title?: string}> = ({ title }) => {
+interface BlogProps {
+  useHook?: () => any[] // replace any with the actual type returned by the hooks
+  title?: string
+}
 
-  const posts = useGetEducation()
+const Blog: React.FC<BlogProps> = ({ title, useHook }) => {
+
+  const posts = useHook ? useHook() : []
 
 
   return (
