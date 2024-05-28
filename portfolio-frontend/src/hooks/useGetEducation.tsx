@@ -5,11 +5,12 @@ import config from '../../config'
 
 
 interface ApiData {
-  // define the shape of your API data here
-  // for example:
-  id: number
-  name: string
-  description: string
+  site?: string
+  location?: string
+  study?: string
+  start_date?: string
+  end_date?: string
+  link?: string
   images?: string[]
 }
 
