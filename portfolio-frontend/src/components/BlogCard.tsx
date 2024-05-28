@@ -31,8 +31,8 @@ const BlogCard: React.FC<{ data: BlogCardData }> = ({ data }) => {
         </Row>
       </Col>
       <Col sm={10} className='bg-white rounded py-3 glass'>
-        <Row>
-          <Col sm={4}>
+        <Row className='align-items-center'>
+          <Col sm={3}>
             {data.images ?
               data.images.map((image, index) => (
                 <Image key={index} src={image} rounded />
@@ -40,13 +40,15 @@ const BlogCard: React.FC<{ data: BlogCardData }> = ({ data }) => {
               <Image src='https://via.placeholder.com/600x400' rounded />
             }
           </Col>
-          <Col sm={8}>
-            <Row className='text-2xl'>
-              {`${data.location}, ${data.site}`}
-            </Row>
-            <Row>
-              {data.study}
-            </Row>
+          <Col sm={9}>
+            <div>
+              <Row className='text-2xl'>
+                {`${data.site}, ${data.location}`}
+              </Row>
+              <Row>
+                {data.study}
+              </Row>
+            </div>
           </Col>
         </Row>
       </Col>
