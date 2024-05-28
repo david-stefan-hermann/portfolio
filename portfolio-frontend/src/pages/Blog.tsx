@@ -9,9 +9,9 @@ const Blog: React.FC = () => {
 
 
   return (
-    <div className='w-full timeline flex flex-col'>
-      <div className='z-10 bg-white pb-10 -mb-10'>
-        <p className='text-4xl text-center pt-4 pb-2'>
+    <div className='w-full flex flex-col'>
+      <div className='mb-6'>
+        <p className='text-4xl text-center pt-4'>
           Bildung
         </p>
       </div>

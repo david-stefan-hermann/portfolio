@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row, Image } from 'react-bootstrap'
+import * as Icon from 'react-bootstrap-icons'
 
 
 interface BlogCardData {
@@ -13,24 +14,30 @@ interface BlogCardData {
 }
 
 const BlogCard: React.FC<{ data: BlogCardData }> = ({ data }) => {
+
+  const siteArraySchool = ['Gymnasium', 'Schule']
+  const siteArrayUniversity = ['Hochschule', 'Universität']
+
+  const containsSiteSchool = siteArraySchool.some(site => data.site?.toLocaleLowerCase().includes(site.toLocaleLowerCase()))
+  const containsSiteUniversity = siteArrayUniversity.some(site => data.site?.toLocaleLowerCase().includes(site.toLocaleLowerCase()))
+
   return (
-    <Row className='w-full pt-3 items-center ml-0 z-20'>
-      <Col sm={2}>
-        <Row>
-          <Col sm={12}>
-            <Row className='text-lg'>
-              <div className='w-full pl-0 flex flex-row items-center'>
-                <div className='h-4 w-4 mx-2 bg-black outline outline-8 outline-amber-400 rounded-full'></div>
-                <div className='pl-4 flex flex-col'>
-                  <span className=''>{data.end_date}</span>
-                  <span className=''>{data.start_date}</span>
-                </div>
-              </div>
-            </Row>
-          </Col>
+    <Row className='w-full m-0 p-0'>
+      <Col sm={1} className='m-0 p-0 justify-center'>
+        <Row className='w-full h-full m-0 flex flex-col'>
+          <div className='p-0 m-0 w-1 h-full flex flex-col items-center bg-slate-500'>
+            {
+              containsSiteUniversity ? <Icon.MortarboardFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
+                : <> {
+                  containsSiteSchool ? <Icon.BackpackFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
+                    : <Icon.MortarboardFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
+                } </>
+            }
+
+          </div>
         </Row>
       </Col>
-      <Col sm={10} className='bg-white rounded py-3 glass'>
+      <Col sm={11} className='bg-white rounded py-3 glass mb-4'>
         <Row className='align-items-center'>
           <Col sm={3}>
             {data.images ?
@@ -42,7 +49,10 @@ const BlogCard: React.FC<{ data: BlogCardData }> = ({ data }) => {
           </Col>
           <Col sm={9}>
             <div>
-              <Row className='text-2xl'>
+              <Row className='font-semibold'>
+                {`${data.start_date} - ${data.end_date}`}
+              </Row>
+              <Row className='text-2xl font-semibold'>
                 {`${data.site}, ${data.location}`}
               </Row>
               <Row>
