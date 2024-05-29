@@ -4,6 +4,7 @@ import path from 'path'
 import educationRouter from './routes/education'
 import experienceRouter from './routes/experience'
 import projectsRouter from './routes/projects'
+import settingsRouter from './routes/settings'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
@@ -27,10 +28,13 @@ app.use(bodyParser.json())
 app.use('/education', express.static(path.join(__dirname, '../data/education')))
 app.use('/experience', express.static(path.join(__dirname, '../data/experience')))
 app.use('/projects', express.static(path.join(__dirname, '../data/projects')))
+app.use('/settings', express.static(path.join(__dirname, '../data/settings')))
 
 app.use('/api/education', educationRouter)
 app.use('/api/experience', experienceRouter)
 app.use('/api/projects', projectsRouter)
+app.use('/api/settings', settingsRouter)
+
 
 app.listen(port, () => {
   console.log(`Server is running at ${baseUrl} (port: ${port})`)
