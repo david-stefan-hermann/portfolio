@@ -1,43 +1,17 @@
 import React from 'react'
 import { Col, Row, Image } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
+import { ApiBlogData } from '../hooks/useGetExperience'
 
 
-interface BlogCardData {
-  title?: string
-  location?: string
-  study?: string
-  start_date?: string
-  end_date?: string
-  link?: string
-  images?: string[]
-  job_title?: string
-  description?: string[]
-}
-
-const BlogCard: React.FC<{ data: BlogCardData }> = ({ data }) => {
-
-  const siteArraySchool = ['Gymnasium', 'Schule']
-  const siteArrayUniversity = ['Hochschule', 'Universität']
-
-  const containsSiteSchool = siteArraySchool.some(site => data.title?.toLocaleLowerCase().includes(site.toLocaleLowerCase()))
-  const containsSiteUniversity = siteArrayUniversity.some(site => data.title?.toLocaleLowerCase().includes(site.toLocaleLowerCase()))
+const EducationCard: React.FC<{ data: ApiBlogData }> = ({ data }) => {
 
   return (
     <Row className='w-full m-0 p-0'>
       <Col sm={1} className='m-0 p-0 justify-center'>
         <Row className='w-full h-full m-0 flex flex-col'>
           <div className='p-0 m-0 w-1 h-full flex flex-col items-center bg-slate-500'>
-            {
-              data.job_title ? <Icon.BriefcaseFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
-                : <>{
-                  containsSiteUniversity ? <Icon.MortarboardFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
-                    : <> {
-                      containsSiteSchool ? <Icon.BackpackFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
-                        : <Icon.MortarboardFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
-                    } </>
-                }</>
-            }
+            <Icon.BriefcaseFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
           </div>
         </Row>
       </Col>
@@ -63,7 +37,6 @@ const BlogCard: React.FC<{ data: BlogCardData }> = ({ data }) => {
                 {data.job_title && data.job_title}
               </Row>
               <Row>
-                {data.study && data.study}
                 <ul>
                   {data.description && data.description.map((desc, index) => (
                     <li key={index} className='list-disc'>{desc}</li>
@@ -83,4 +56,4 @@ const BlogCard: React.FC<{ data: BlogCardData }> = ({ data }) => {
   )
 }
 
-export default BlogCard
+export default EducationCard

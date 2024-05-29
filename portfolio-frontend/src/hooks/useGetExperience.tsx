@@ -3,7 +3,7 @@ import axios from 'axios'
 import config from '../../config'
 
 
-interface ApiBlogData {
+export interface ApiBlogData {
   title?: string
   location?: string
   job_title?: string
