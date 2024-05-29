@@ -11,6 +11,8 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import MainContent from './components/MainContent'
+import useGetEducation from './hooks/useGetEducation'
+import useGetExperience from './hooks/useGetExperience'
 
 
 function App() {
@@ -22,8 +24,8 @@ function App() {
         <MainContent>
           <Routes>
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/bildung" element={<Blog title="Bildung" />} />
-            <Route path="/erfahrung" element={<Blog title="Erfahrung" />} />
+            <Route path="/bildung" element={<Blog title="Bildung" useHook={useGetEducation} />} />
+            <Route path="/erfahrung" element={<Blog title="Erfahrung" useHook={useGetExperience} />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Link to="/" />} />
           </Routes>
