@@ -1,16 +1,35 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { Box, Typography, useTheme } from '@mui/material'
 
 const Home: React.FC = () => {
+  const theme = useTheme()
+  const [headerHeight, setHeaderHeight] = useState(0)
+
+  useEffect(() => {
+    const header = document.getElementById('header')
+    if (header) {
+      setHeaderHeight(header.offsetHeight)
+    }
+  }, [])
+
   return (
-    <div className='w-100 text-center'>
-      <p className='text-7xl'>
+    <Box
+      id="hero"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      height='100vh'
+      marginTop={`-${headerHeight}px`}
+      textAlign="center"
+    >
+      <Typography variant="h1">
         David Hermann
-      </p>
-      <p className='text-xl'>
+      </Typography>
+      <Typography variant="h4">
         Software Developer und Systemadministrator
-      </p>
-    </div>
+      </Typography>
+    </Box>
   )
 }
 

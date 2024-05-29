@@ -1,37 +1,42 @@
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import Home from './pages/Home' // replace with your actual component paths
 import Portfolio from './pages/Portfolio'
 import TopNavbar from './components/TopNavbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-/* Roboto Font for Material UI */
-import '@fontsource/roboto/300.css'
-import '@fontsource/roboto/400.css'
-import '@fontsource/roboto/500.css'
-import '@fontsource/roboto/700.css'
-
-import MainContent from './components/MainContent'
 import EducationList from './pages/EducationList'
 import ExperienceList from './pages/ExperienceList'
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import Footer from './components/Footer'
+import { Container } from '@mui/material'
+
+
+const theme = responsiveFontSizes(createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#3be1c0',
+    },
+    secondary: {
+      main: '#3b5ce1',
+    },
+  },
+}))
 
 
 function App() {
-
   return (
-    <>
-      <Router>
-        <TopNavbar />
-        <MainContent>
-          <Routes>
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/bildung" element={<EducationList />} />
-            <Route path="/erfahrung" element={<ExperienceList />} />
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<Link to="/" />} />
-          </Routes>
-        </MainContent>
-      </Router>
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <TopNavbar />
+      <Container maxWidth="lg">
+        <Home />
+        <ExperienceList />
+        <Portfolio />
+        <EducationList />
+      </Container>
+      <Footer />
+    </ThemeProvider>
   )
 }
 

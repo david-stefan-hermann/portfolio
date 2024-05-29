@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import PortfolioCard from '../components/PortfolioCard'
-import { Grid } from '@material-ui/core'
+import { Grid } from '@mui/material'
 import useGetProjects from '../hooks/useGetProjects'
 
 
