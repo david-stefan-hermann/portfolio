@@ -3,20 +3,20 @@ import axios from 'axios'
 import config from '../../config'
 
 
-interface ApiData {
-  id: number
-  name: string
-  description: string
+export interface ApiData {
+  hero_title?: string
+  hero_subtitle?: string
+  gh_link?: string
   images?: string[]
 }
 
-const useGetProjects = (): ApiData[] => {
-  const [data, setData] = useState<ApiData[]>([])
+const useGetSettings = (): ApiData | null => {
+  const [data, setData] = useState<ApiData | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${config.API_URL}/projects`)
+        const response = await axios.get(`${config.API_URL}/settings`)
         setData(response.data)
       } catch (error) {
         console.error('Error:', error)
@@ -28,4 +28,4 @@ const useGetProjects = (): ApiData[] => {
   return data
 }
 
-export default useGetProjects
+export default useGetSettings
