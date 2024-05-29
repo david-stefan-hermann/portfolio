@@ -4,7 +4,7 @@ import config from '../../config'
 
 
 interface ApiBlogData {
-  site?: string
+  title?: string
   location?: string
   study?: string
   start_date?: string

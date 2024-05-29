@@ -4,13 +4,14 @@ import config from '../../config'
 
 
 interface ApiBlogData {
-  site?: string
+  title?: string
   location?: string
-  study?: string
+  job_title?: string
   start_date?: string
   end_date?: string
   link?: string
   images?: string[]
+  description?: string[]
 }
 
 const useGetExperience = (): ApiBlogData[] | null => {
