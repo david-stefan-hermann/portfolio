@@ -3,7 +3,7 @@ import BlogCard from '../components/BlogCard'
 
 
 interface BlogProps {
-  useHook?: () => any[] // replace any with the actual type returned by the hooks
+  useHook?: () => any[] | null // replace any with the actual type returned by the hooks
   title?: string
 }
 
