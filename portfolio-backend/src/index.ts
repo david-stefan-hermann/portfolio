@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
 import educationRouter from './routes/education'
+import experienceRouter from './routes/experience'
 import projectsRouter from './routes/projects'
 import dotenv from 'dotenv'
 import cors from 'cors'
@@ -24,9 +25,11 @@ app.use(bodyParser.json())
 
 // Serve static files (images)
 app.use('/education', express.static(path.join(__dirname, '../data/education')))
+app.use('/experience', express.static(path.join(__dirname, '../data/experience')))
 app.use('/projects', express.static(path.join(__dirname, '../data/projects')))
 
 app.use('/api/education', educationRouter)
+app.use('/api/experience', experienceRouter)
 app.use('/api/projects', projectsRouter)
 
 app.listen(port, () => {
