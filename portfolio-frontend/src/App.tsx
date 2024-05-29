@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import Home from './pages/Home' // replace with your actual component paths
 import Portfolio from './pages/Portfolio'
-import Blog from './pages/EducationList'
 import TopNavbar from './components/TopNavbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
