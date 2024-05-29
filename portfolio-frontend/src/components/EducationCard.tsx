@@ -2,6 +2,7 @@ import React from 'react'
 import { Col, Row, Image } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 import { ApiBlogData } from '../hooks/useGetEducation'
+import ImageCarousel from './carousel/ImageCarousel'
 
 
 const EducationCard: React.FC<{ data: ApiBlogData }> = ({ data }) => {
@@ -31,9 +32,8 @@ const EducationCard: React.FC<{ data: ApiBlogData }> = ({ data }) => {
         <Row className='align-items-center'>
           <Col sm={3}>
             {data.images ?
-              data.images.map((image, index) => (
-                <Image key={index} src={image} rounded />
-              )) :
+              <ImageCarousel images={data.images} />
+              :
               <Image src='https://via.placeholder.com/600x400' rounded />
             }
           </Col>

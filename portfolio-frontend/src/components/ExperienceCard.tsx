@@ -7,17 +7,17 @@ import { ApiBlogData } from '../hooks/useGetExperience'
 const EducationCard: React.FC<{ data: ApiBlogData }> = ({ data }) => {
 
   return (
-    <Row className='w-full m-0 p-0'>
-      <Col sm={1} className='m-0 p-0 justify-center'>
+    <Row className='w-full m-0 px-4 md:px-0'>
+      <Col sm={1} className='m-0 p-0 justify-center hidden md:block'>
         <Row className='w-full h-full m-0 flex flex-col'>
           <div className='p-0 m-0 w-1 h-full flex flex-col items-center bg-slate-500'>
             <Icon.BriefcaseFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
           </div>
         </Row>
       </Col>
-      <Col sm={11} className='bg-white rounded py-3 glass mb-4'>
+      <Col sm={11} className='bg-white rounded py-3 md:glass mb-4'>
         <Row className='align-items-center'>
-          <Col sm={3}>
+          <Col sm={3} className=''>
             {data.images ?
               data.images.map((image, index) => (
                 <Image key={index} src={image} rounded />
