@@ -1,23 +1,22 @@
 import React from 'react'
-import useGetExperience from '../hooks/useGetExperience'
 import ExperienceCard from '../components/ExperienceCard'
-
+import useGetEducation from '../hooks/useGetEducation'
+import { Box, Typography } from '@mui/material'
 
 const ExperienceList: React.FC<{}> = () => {
-
-  const posts = useGetExperience()
+  const posts = useGetEducation()
 
   return (
-    <div className='w-full flex flex-col'>
-      <div className='mb-6'>
-        <p className='text-4xl text-center pt-4'>
-          Arbeitserfahrung
-        </p>
-      </div>
+    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ mb: 6 }}>
+        <Typography variant="h2" align="center" pt={4}>
+        Arbeitserfahrung
+        </Typography>
+      </Box>
       {posts && posts.map((post) => (
         <ExperienceCard data={post} />
       ))}
-    </div>
+    </Box>
   )
 }
 

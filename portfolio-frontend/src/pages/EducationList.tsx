@@ -1,23 +1,22 @@
 import React from 'react'
 import EducationCard from '../components/EducationCard'
 import useGetEducation from '../hooks/useGetEducation'
-
+import { Box, Typography } from '@mui/material'
 
 const EducationList: React.FC<{}> = () => {
-
   const posts = useGetEducation()
 
   return (
-    <div className='w-full flex flex-col'>
-      <div className='mb-6'>
-        <p className='text-4xl text-center pt-4'>
+    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ mb: 6 }}>
+        <Typography variant="h2" align="center" pt={4}>
           Bildungsweg
-        </p>
-      </div>
+        </Typography>
+      </Box>
       {posts && posts.map((post) => (
         <EducationCard data={post} />
       ))}
-    </div>
+    </Box>
   )
 }
 
