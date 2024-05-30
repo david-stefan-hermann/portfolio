@@ -7,6 +7,8 @@ import projectsRouter from './routes/projects'
 import settingsRouter from './routes/settings'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger';
 
 
 const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
@@ -34,6 +36,8 @@ app.use('/api/education', educationRouter)
 app.use('/api/experience', experienceRouter)
 app.use('/api/projects', projectsRouter)
 app.use('/api/settings', settingsRouter)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 
 app.listen(port, () => {
