@@ -6,7 +6,11 @@ const BaseCardImage: React.FC<{ images: string[] | undefined }> = ({ images }) =
     return (
         <>
             {images && images[0] && (
-                <Grid item xs={12} sm={3}>
+                <Grid
+                    item
+                    xs={12}
+                    sm={3}
+                    sx={{}}>
                     <ImageCarousel images={images} />
                 </Grid>
             )}
@@ -30,8 +34,11 @@ const BaseCard: React.FC<BaseCardProps> = ({ imageLeft, link, images, children }
                 display: 'flex',
                 justifyContent: 'space-between',
                 mb: 2,
+                px: 3,
+                py: 1,
                 width: '100%',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                bgcolor: 'background.light',
             }}>
             <Grid container spacing={2}>
                 {imageLeft && <BaseCardImage images={images} />}
@@ -41,7 +48,7 @@ const BaseCard: React.FC<BaseCardProps> = ({ imageLeft, link, images, children }
                         {link && (
                             <Button
                                 variant="contained"
-                                color="secondary"
+                                color="primary"
                                 sx={{ mt: 1 }}
                                 onClick={() => {
                                     link && (

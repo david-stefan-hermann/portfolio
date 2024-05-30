@@ -1,4 +1,4 @@
-import { Carousel, Container, Image } from 'react-bootstrap'
+import { Carousel, Image } from 'react-bootstrap'
 import { Box } from '@mui/material'
 
 
@@ -13,6 +13,7 @@ const ImageCarousel: React.FC<{ images: string[] }> = ({ images }) => {
         width: '100%',
         height: '100%',
         overflow: 'hidden',
+        py: 2,
       }}
     >
       <Box

@@ -18,7 +18,7 @@ const PortfolioCard: React.FC<{ index: number, data: ApiData }> = ({ index, data
       </Typography>
       {data.date && data.date && (
         <Typography gutterBottom variant="body2" color="text.primary" fontWeight="bold">
-          Duration: {data.date} - {data.date}
+          {data.date}
         </Typography>
       )}
       {data.description && (

@@ -14,21 +14,17 @@ const EducationCard: React.FC<{ index: number, data: ApiBlogData }> = ({ index, 
       images={data.images}
     >
       <Typography variant="h5" component="div" color="text.primary">
-        {data.title || "Untitled"}
+        {data.title || " - "}
+        {data.location && `, ${data.location}`}
       </Typography>
       {data.start_date && data.end_date && (
         <Typography gutterBottom variant="body2" color="text.primary" fontWeight="bold">
-          Duration: {data.start_date} - {data.end_date}
-        </Typography>
-      )}
-      {data.location && (
-        <Typography variant="body2" color="text.secondary">
-          Location: {data.location}
+          {data.start_date} - {data.end_date}
         </Typography>
       )}
       {data.study && (
         <Typography gutterBottom variant="body2" color="text.secondary">
-          Study Field: {data.study}
+          {data.study}
         </Typography>
       )}
     </BaseCard>

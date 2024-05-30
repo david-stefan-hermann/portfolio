@@ -22,7 +22,7 @@ const ExperienceCard: React.FC<{ index: number, data: ApiBlogData }> = ({ index,
       </Typography>
       {data.start_date && data.end_date && (
         <Typography gutterBottom variant="body2" color="text.primary" fontWeight="bold">
-          Duration: {data.start_date} - {data.end_date}
+          {data.start_date} - {data.end_date}
         </Typography>
       )}
       {data.description && (

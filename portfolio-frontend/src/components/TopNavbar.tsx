@@ -7,12 +7,12 @@ const TopNavbar: React.FC = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const pages = [
     {
-      title: 'Portfolio',
-      anchor: '#portfolio',
-    },
-    {
       title: 'Arbeitserfahrung',
       anchor: '#erfahrung',
+    },
+    {
+      title: 'Portfolio',
+      anchor: '#portfolio',
     },
     {
       title: 'Bildung',
