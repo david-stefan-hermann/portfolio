@@ -1,12 +1,24 @@
 import React from 'react'
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Link, Typography, alpha, useTheme } from '@mui/material'
 import useGetSettings from '../hooks/useGetSettings'
 import useGetHeaderHeight from '../hooks/useGetHeaderHeight'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { keyframes } from '@mui/system'
+import useGetScrollDistance from '../hooks/useGetScrollDistance'
 
 const Home: React.FC = () => {
   const theme = useTheme()
   const settings = useGetSettings()
   const headerHeight = useGetHeaderHeight()
+  const scrollPosition = useGetScrollDistance()
+
+  const bounce = keyframes`
+  0%, 20%, 40%, 100% {
+    transform: translateY(0);
+  }
+  10%, 30% {
+    transform: translateY(${headerHeight / 2}px);
+  }`
 
   return (
     <>
@@ -38,7 +50,7 @@ const Home: React.FC = () => {
         >
           <Box
             sx={{
-              backgroundColor: "rgba(255, 255, 255, 0.4)",
+              backgroundColor: alpha(theme.palette.background.default, 0.3),
               borderRadius: theme.spacing(1),
               padding: theme.spacing(2),
               marginBottom: `-${theme.spacing(4)}`,
@@ -70,6 +82,36 @@ const Home: React.FC = () => {
             </Typography>
           </Box>
         </Box>
+      </Box>
+      <Box
+        sx={{
+          height: headerHeight * 2,
+          marginTop: `-${headerHeight * 2}px`,
+          textAlign: 'center',
+        }}
+      >
+        <Typography
+          variant="h2"
+          sx={{
+            bottom: 0,
+            opacity: `${scrollPosition > 50 ? '0' : '1'}`,
+            visibility: `${scrollPosition > 50 ? 'hidden' : 'visible'}`,
+            transition: 'all 1.5s ease',
+          }}
+        >
+          <Link
+            href="#erfahrung"
+          >
+            <ExpandMoreIcon
+              sx={{
+                color: 'primary.light',
+                fontWeight: 'semibold',
+                fontSize: { xs: '5rem', md: '6rem' },
+                animation: `${bounce} 3s infinite`,
+              }}
+            />
+          </Link>
+        </Typography>
       </Box>
     </>
   )

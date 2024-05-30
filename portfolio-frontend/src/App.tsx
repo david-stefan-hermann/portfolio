@@ -14,10 +14,13 @@ let theme = responsiveFontSizes(createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#4dc4ff',
+      main: '#c162cc',
     },
     secondary: {
-      main: '#ff5500',
+      main: '#32b723',
+    },
+    background: {
+      default: '#d9d7d4',
     },
   },
 }))
@@ -27,12 +30,17 @@ theme = createTheme(theme, {
     mode: 'light',
     primary: theme.palette.augmentColor({
       color: {
-        main: '#4dc4ff',
+        main: '#c162cc',
       },
     }),
     secondary: theme.palette.augmentColor({
       color: {
-        main: '#ff884d',
+        main: '#32b723',
+      }
+    }),
+    background: theme.palette.augmentColor({
+      color: {
+        main: '#d9d7d4',
       }
     }),
   },
