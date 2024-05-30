@@ -12,7 +12,7 @@ const PortfolioPage: React.FC = () => {
   return (
     <>
       <Box
-        id="erfahrung"
+        id="portfolio"
         sx={{
           height: `${headerHeight}px`,
           marginTop: `-${headerHeight}px`
