@@ -1,22 +1,37 @@
 import React from 'react'
 import ExperienceCard from '../components/ExperienceCard'
-import useGetEducation from '../hooks/useGetEducation'
+import useGetExperience from '../hooks/useGetExperience'
 import { Box, Typography } from '@mui/material'
+import useGetHeaderHeight from '../hooks/useGetHeaderHeight'
 
 const ExperienceList: React.FC<{}> = () => {
-  const posts = useGetEducation()
+  const posts = useGetExperience()
+  const headerHeight = useGetHeaderHeight()
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-      <Box sx={{ mb: 6 }}>
-        <Typography variant="h2" align="center" pt={4}>
-        Arbeitserfahrung
-        </Typography>
+    <>
+      <Box
+        id="erfahrung"
+        sx={{
+          height: `${headerHeight}px`,
+          marginTop: `-${headerHeight}px`
+        }}></Box>
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+        <Box sx={{ mb: 6 }}>
+          <Typography variant="h2" align="center" pt={4}>
+            Arbeitserfahrung
+          </Typography>
+        </Box>
+        {posts && posts.map((post, idx) => (
+          <ExperienceCard key={idx} index={idx} data={post} />
+        ))}
       </Box>
-      {posts && posts.map((post) => (
-        <ExperienceCard data={post} />
-      ))}
-    </Box>
+    </>
   )
 }
 

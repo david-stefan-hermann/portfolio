@@ -1,63 +1,58 @@
 import React from 'react'
-import { Col, Row, Image } from 'react-bootstrap'
-import * as Icon from 'react-bootstrap-icons'
 import { ApiBlogData } from '../hooks/useGetEducation'
 import ImageCarousel from './carousel/ImageCarousel'
+import { Box, CardContent, Grid, Link, Typography } from '@mui/material'
 
-
-const EducationCard: React.FC<{ data: ApiBlogData }> = ({ data }) => {
-
-  const siteArraySchool = ['Gymnasium', 'Schule']
-  const siteArrayUniversity = ['Hochschule', 'Universität']
-
-  const containsSiteSchool = siteArraySchool.some(site => data.title?.toLocaleLowerCase().includes(site.toLocaleLowerCase()))
-  const containsSiteUniversity = siteArrayUniversity.some(site => data.title?.toLocaleLowerCase().includes(site.toLocaleLowerCase()))
+const EducationCard: React.FC<{ index: number, data: ApiBlogData }> = ({ index, data }) => {
+  //const imageLeft = index % 2 === 0 // Determine position of the image
+  const imageLeft = true
 
   return (
-    <Row className='w-full m-0 p-0'>
-      <Col sm={1} className='m-0 p-0 justify-center'>
-        <Row className='w-full h-full m-0 flex flex-col'>
-          <div className='p-0 m-0 w-1 h-full flex flex-col items-center bg-slate-500'>
-            {
-              containsSiteUniversity ? <Icon.MortarboardFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
-                : <> {
-                  containsSiteSchool ? <Icon.BackpackFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
-                    : <Icon.MortarboardFill className='bg-blue-200 text-slate-700 text-5xl rounded-full p-2' />
-                } </>
-            }
-          </div>
-        </Row>
-      </Col>
-      <Col sm={11} className='bg-white rounded py-3 glass mb-4'>
-        <Row className='align-items-center'>
-          <Col sm={3}>
-            {data.images ?
-              <ImageCarousel images={data.images} />
-              :
-              <Image src='https://via.placeholder.com/600x400' rounded />
-            }
-          </Col>
-          <Col sm={9}>
-            <div>
-              <Row className='font-semibold'>
-                {`${data.start_date} - ${data.end_date}`}
-              </Row>
-              <Row className='text-2xl font-semibold'>
-                {`${data.title}, ${data.location}`}
-              </Row>
-              <Row>
-                {data.study && data.study}
-              </Row>
-              <Row>
-                <div className='p-0'>
-                  {data.link && <a href={data.link} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded">Webseite besuchen</a>}
-                </div>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, width: '100%', overflow: 'hidden' }}>
+      <Grid container spacing={2}>
+        {imageLeft && data.images && data.images[0] && (
+          <Grid item xs={12} sm={3}>
+            <ImageCarousel images={data.images} />
+          </Grid>
+        )}
+        <Grid item xs={12} sm={9} sx={{ justifyContent: "right" }}>
+          <CardContent>
+            <Typography variant="h5" component="div" color="text.primary">
+              {data.title || "Untitled"}
+            </Typography>
+            {data.start_date && data.end_date && (
+              <Typography gutterBottom variant="body2" color="text.primary" fontWeight="bold">
+                Duration: {data.start_date} - {data.end_date}
+              </Typography>
+            )}
+            {data.location && (
+              <Typography variant="body2" color="text.secondary">
+                Location: {data.location}
+              </Typography>
+            )}
+            {data.study && (
+              <Typography gutterBottom variant="body2" color="text.secondary">
+                Study Field: {data.study}
+              </Typography>
+            )}
+            {data.link && (
+              <Link
+                href={data.link.startsWith('http://') || data.link.startsWith('https://') ? data.link : `http://${data.link}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Webseite besuchen
+              </Link>
+            )}
+          </CardContent>
+        </Grid>
+        {!imageLeft && data.images && data.images[0] && (
+          <Grid item xs={12} sm={3}>
+            <ImageCarousel images={data.images} />
+          </Grid>
+        )}
+      </Grid>
+    </Box>
   )
 }
 

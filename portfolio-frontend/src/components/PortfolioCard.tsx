@@ -1,43 +1,55 @@
 import React from 'react'
-import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import { Button } from '@mui/material'
+import { Box, Grid, Link } from '@mui/material'
+import ImageCarousel from './carousel/ImageCarousel'
+import { ApiData } from '../hooks/useGetProjects'
 
+const PortfolioCard: React.FC<{ index: number, data: ApiData }> = ({ index, data }) => {
+  //const imageLeft = index % 2 === 0 // Determine position of the image
+  const imageLeft = false
 
-interface ProjectData {
-  title?: string
-  description?: string
-  motivation?: string
-  link?: string
-  images?: string[]
-}
-
-const PortfolioCard: React.FC<{ data: ProjectData }> = ({ data }) => {
   return (
-    <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        {data?.images && (
-          <>{data?.images}</>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, width: '100%', overflow: 'hidden' }}>
+      <Grid container spacing={2}>
+        {imageLeft && data.images && data.images[0] && (
+          <Grid item xs={12} sm={3}>
+            <ImageCarousel images={data.images} />
+          </Grid>
         )}
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {data?.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {data?.description}
-          </Typography>
-          {
-            data?.link && (
-              <Button color="primary" href={data?.link} target="_blank" rel="noopener noreferrer">
-              Learn More
-              </Button>
-            )
-          }
-        </CardContent>
-      </Card>
-    </Grid>
+        <Grid item xs={12} sm={9} sx={{ justifyContent: "right" }}>
+          <CardContent>
+            <Typography variant="h6" component="div" color="text.primary">
+              {data.title || "Untitled"}
+            </Typography>
+            {data.date && data.date && (
+              <Typography gutterBottom variant="body2" color="text.primary" fontWeight="bold">
+                Duration: {data.date} - {data.date}
+              </Typography>
+            )}
+            {data.description && (
+              <Typography gutterBottom variant="body2" color="text.secondary">
+                {data.description}
+              </Typography>
+            )}
+            {data.link && (
+              <Link
+                href={data.link.startsWith('http://') || data.link.startsWith('https://') ? data.link : `http://${data.link}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Webseite besuchen
+              </Link>
+            )}
+          </CardContent>
+        </Grid>
+        {!imageLeft && data.images && data.images[0] && (
+          <Grid item xs={12} sm={3}>
+            <ImageCarousel images={data.images} />
+          </Grid>
+        )}
+      </Grid>
+    </Box>
   )
 }
 

@@ -3,11 +3,12 @@ import axios from 'axios'
 import config from '../../config'
 
 
-interface ApiData {
-  id: number
-  name: string
-  description: string
+export interface ApiData {
+  title?: string
+  description?: string
   images?: string[]
+  link?: string
+  date?: string
 }
 
 const useGetProjects = (): ApiData[] => {

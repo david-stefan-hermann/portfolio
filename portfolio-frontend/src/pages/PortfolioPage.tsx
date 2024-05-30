@@ -1,17 +1,18 @@
 import React from 'react'
-import EducationCard from '../components/EducationCard'
-import useGetEducation from '../hooks/useGetEducation'
+import PortfolioCard from '../components/PortfolioCard'
 import { Box, Typography } from '@mui/material'
+import useGetProjects from '../hooks/useGetProjects'
 import useGetHeaderHeight from '../hooks/useGetHeaderHeight'
 
-const EducationList: React.FC<{}> = () => {
-  const posts = useGetEducation()
+
+const PortfolioPage: React.FC = () => {
+  const projects = useGetProjects()
   const headerHeight = useGetHeaderHeight()
 
   return (
     <>
       <Box
-        id="bildung"
+        id="erfahrung"
         sx={{
           height: `${headerHeight}px`,
           marginTop: `-${headerHeight}px`
@@ -24,15 +25,15 @@ const EducationList: React.FC<{}> = () => {
         }}>
         <Box sx={{ mb: 6 }}>
           <Typography variant="h2" align="center" pt={4}>
-            Bildungsweg
+            Portfolio - Projekte
           </Typography>
         </Box>
-        {posts && posts.map((post, idx) => (
-          <EducationCard key={idx} index={idx} data={post} />
+        {projects && projects.map((project, idx) => (
+          <PortfolioCard key={idx} index={idx} data={project} />
         ))}
       </Box>
     </>
   )
 }
 
-export default EducationList
+export default PortfolioPage

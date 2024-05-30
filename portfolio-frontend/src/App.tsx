@@ -1,40 +1,63 @@
-import Home from './pages/Home' // replace with your actual component paths
-import Portfolio from './pages/Portfolio'
+import Home from './pages/Home'
+import PortfolioPage from './pages/PortfolioPage'
 import TopNavbar from './components/TopNavbar'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
 import EducationList from './pages/EducationList'
 import ExperienceList from './pages/ExperienceList'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import Footer from './components/Footer'
 import { Container } from '@mui/material'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-
-const theme = responsiveFontSizes(createTheme({
+let theme = responsiveFontSizes(createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#3be1c0',
+      main: '#4dc4ff',
     },
     secondary: {
-      main: '#3b5ce1',
+      main: '#ff5500',
     },
   },
 }))
 
+theme = createTheme(theme, {
+  palette: {
+    mode: 'light',
+    primary: theme.palette.augmentColor({
+      color: {
+        main: '#4dc4ff',
+      },
+    }),
+    secondary: theme.palette.augmentColor({
+      color: {
+        main: '#ff884d',
+      }
+    }),
+  },
+})
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <TopNavbar />
-      <Container maxWidth="lg">
-        <Home />
-        <ExperienceList />
-        <Portfolio />
-        <EducationList />
-      </Container>
+      <Router>
+        <Routes>
+          <Route path="/" element={
+            <Container
+              maxWidth="md"
+            >
+              <Home />
+              <ExperienceList />
+              <PortfolioPage />
+              <EducationList />
+            </Container>
+          } />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
       <Footer />
     </ThemeProvider>
   )

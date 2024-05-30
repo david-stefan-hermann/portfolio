@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
 import useGetSettings from '../hooks/useGetSettings'
+import useGetHeaderHeight from '../hooks/useGetHeaderHeight'
 
 const Home: React.FC = () => {
   const theme = useTheme()
   const settings = useGetSettings()
-  const [headerHeight, setHeaderHeight] = useState(0)
-
-  useEffect(() => {
-    const header = document.getElementById('header')
-    if (header) {
-      setHeaderHeight(header.offsetHeight)
-    }
-  }, [])
+  const headerHeight = useGetHeaderHeight()
 
   return (
     <>
